@@ -17,8 +17,7 @@
   --blue-theme: #d2e1f6;
   --lightBlue-shade: #e7effc;
   --font-shade: #fff;
-  --main-fontColor: #03045e;
-  --main-blue: #4361ee;
+  --main-fontColor: #a1b1ca;
 }
 
 body {
@@ -30,6 +29,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+   color: var(--main-fontColor);
 }
 
 .container {
@@ -42,6 +42,12 @@ body {
   -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: var(--lightBlue-shade);
+}
+
+.btnsAndHeadingDiv {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0rem;
 }
 
 .imgDiv {
@@ -57,11 +63,38 @@ body {
   border-radius: 50%;
   box-shadow: inset 10px 10px 25px #d3dcf1,
     -15px -15px 30px var(--lightBlue-shade);
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  margin-bottom: 2rem;
 }
 
 .playingSongImg {
-  height: 13.0rem;
-  width: 13.0rem;
+  height: 13rem;
+  width: 13rem;
   border-radius: 50%;
+}
+
+.sliderDiv,
+.titleDiv,
+.allPlayingBtnsDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.allPlayingBtnsDiv {
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+}
+
+a{
+     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px; 
+    border-radius: 50%;
+}
+
+i{
+    padding: 1rem;
+    color: var(--main-fontColor);
 }
