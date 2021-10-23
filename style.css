@@ -1,0 +1,67 @@
+/*
+ ______________________________________________
+|                                              |
+|     DEFAULT BODY AND OTHER CSS TAG           |
+|______________________________________________|
+*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue-theme: #d2e1f6;
+  --lightBlue-shade: #e7effc;
+  --font-shade: #fff;
+  --main-fontColor: #03045e;
+  --main-blue: #4361ee;
+}
+
+body {
+  background-color: var(--blue-theme);
+  height: 100vh;
+  margin: auto;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container {
+  position: relative;
+  width: 300px;
+  height: 600px;
+  border-radius: 1.3rem;
+  -webkit-border-radius: 46px;
+  border-radius: 46px;
+  -webkit-box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: var(--lightBlue-shade);
+}
+
+.imgDiv {
+  /* position: absolute; */
+  height: 14.188rem;
+  width: 14.188rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  background: url(../resources/clock.png);
+  background-size: cover;
+  border-radius: 50%;
+  box-shadow: inset 10px 10px 25px #d3dcf1,
+    -15px -15px 30px var(--lightBlue-shade);
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.playingSongImg {
+  height: 13.0rem;
+  width: 13.0rem;
+  border-radius: 50%;
+}

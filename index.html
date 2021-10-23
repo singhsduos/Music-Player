@@ -1,15 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <!-- font-awesome-icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>iM-Player</title>
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="btnsAndHeadingDiv">
+            <a class="backBtn" ><i style="color: burlywood;" class="fas fa-plus-circle"></i></a>
+            <h3>PLAYING NOW</h3>
+            <a class="listBtn" ><i style="color: burlywood;" class="fas fa-plus-circle"></i></a>
+        </div>
+
+        <div class="imgDiv">
+            <img src="./songs.jpg" alt="" class="playingSongImg">
+        </div>
+
+        <div class="titleDiv">
+            <h2 class="titleSong">Lose It</h2>
+        </div>
+
+        <div class="sliderDiv">
+            <input type="range" min="1" max="100" value="0" class="songRange">
+        </div>
+
+        <div class="allPlayingBtnsDiv">
+            <a class="backSongBtn" ><i style="color: burlywood;" class="fas fa-plus-circle"></i></a>
+            <a class="playingSongBtn" ><i style="color: burlywood;" class="fas fa-plus-circle"></i></a>
+            <a class="frontSongBtn" ><i style="color: burlywood;" class="fas fa-plus-circle"></i></a>
+        </div>
+
+
+    </div>
 
     <script src="app.js"></script>
 </body>
+
 </html>
