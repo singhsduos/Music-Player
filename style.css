@@ -255,12 +255,10 @@ i {
   color: var(--light-fontColor);
 }
 
-.pauseSongBtn,
-.playingSongBtn {
+.pauseSongBtn{
   background: var(--darkBlue-shade);
 }
 
-.pauseSongBtn i,
-.playingSongBtn i {
+.pauseSongBtn i{
   color: white;
 }
