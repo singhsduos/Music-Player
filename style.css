@@ -49,6 +49,8 @@ body {
   background-color: var(--lightBlue-shade);
 }
 
+/************ DIV-1 *******************/
+
 .imgAndBtnDiv {
   display: flex;
   justify-content: space-around;
@@ -104,6 +106,11 @@ body {
 }
 
 /************ DIV-2 *******************/
+
+.mainPage{
+  display: none;
+}
+
 
 .btnsAndHeadingDiv {
   display: flex;
