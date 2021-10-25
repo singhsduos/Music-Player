@@ -142,13 +142,13 @@ body {
 
 .sliderDiv,
 .titleDiv,
-.allPlayingBtnsDiv {
+.audioControls {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.allPlayingBtnsDiv {
+.audioControls {
   flex-direction: row;
   justify-content: space-evenly;
   margin: 3rem 0rem;

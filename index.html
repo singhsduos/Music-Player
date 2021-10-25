@@ -91,16 +91,19 @@
                 <input type="range" min="1" max="100" value="1" class="songRange">
             </div>
 
-            <div class="allPlayingBtnsDiv">
-                <a class="repeatBtn"><i class="material-icons-round" title="Playlist Looped">repeat</i></a>
-                <a style="display: none;" class="randomBtn"><i class="fas fa-random" title="Songs Shuffle"></i></a>
-                <a style="display: none;" class="repeatOneBtn"><i class="material-icons-round" title="Repeat This">repeat_one</i></a>
-                <a class="backSongBtn"><i class="fas fa-solid fa-backward" title="Previous Song"></i></a>
+            <div class="audioControls">
+                <a id="repeatBtn"><i class="material-icons-round" title="Playlist Looped">repeat</i></a>
+                <a id="randomBtn" style="display: none; background-color: #6e98fe;"><i class="fas fa-random"
+                        style="color: white;" title="Songs Shuffle"></i></a>
+                <a id="repeatOneBtn" style="display: none; background-color: #6e98fe;"><i class="material-icons-round"
+                        style="color: white;" title="Repeat This">repeat_one</i></a>
+                <a id="backSongBtn"><i class="fas fa-solid fa-backward" title="Previous Song"></i></a>
                 <a id="pauseSong" class="pauseSongBtn"><i class="fas fa-solid fa-pause" title="Pause"></i></a>
                 <a id="playingSong" class="playingSongBtn"><i class="fas fa-solid fa-play" title="Play"></i></a>
-                <a class="frontSongBtn"><i class="fas fa-solid fa-forward" title="Next Song"></i></a>
-                <a class="muteBtn"><i class="fas fa-volume-mute" title="Mute"></i></a>
-                <a style="display: none;" class="volumeUp"><i class="fas fa-volume-up" title="Volume On"></i></a>
+                <a id="frontSongBtn"><i class="fas fa-solid fa-forward" title="Next Song"></i></a>
+                <a id="volumeUp"><i class="fas fa-volume-up" title="mute-this"></i></a>
+                <a id="muteBtn" style="display: none; background-color: #6e98fe;"><i class="fas fa-volume-mute"
+                        style="color: white;" title="Un-mute"></i></a>
             </div>
         </main>
 
