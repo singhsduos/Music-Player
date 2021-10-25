@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- <script src="https://kit.fontawesome.com/233b43a35f.js" crossorigin="anonymous"></script> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <title>iM-Player</title>
 </head>
 
@@ -73,7 +73,7 @@
 
         <main class="mainPage">
             <div class="btnsAndHeadingDiv">
-                <a class="backBtn"><i class="fas fa-solid fa-arrow-left"></i></a>
+                <a class="meloadyBtn"><i class="fas fa-music"></i></a>
                 <h5>PLAYING NOW</h5>
                 <a class="listBtn"><i class="fas fa-solid fa-bars"></i></a>
             </div>
@@ -92,10 +92,15 @@
             </div>
 
             <div class="allPlayingBtnsDiv">
-                <a class="backSongBtn"><i class="fas fa-solid fa-backward"></i></a>
-                <a id="pauseSong" class="pauseSongBtn"><i class="fas fa-solid fa-pause"></i></a>
-                <a id="playingSong" class="playingSongBtn"><i class="fas fa-solid fa-play"></i></a>
-                <a class="frontSongBtn"><i class="fas fa-solid fa-forward"></i></a>
+                <a class="repeatBtn"><i class="material-icons-round" title="Playlist Looped">repeat</i></a>
+                <a style="display: none;" class="randomBtn"><i class="fas fa-random" title="Songs Shuffle"></i></a>
+                <a style="display: none;" class="repeatOneBtn"><i class="material-icons-round" title="Repeat This">repeat_one</i></a>
+                <a class="backSongBtn"><i class="fas fa-solid fa-backward" title="Previous Song"></i></a>
+                <a id="pauseSong" class="pauseSongBtn"><i class="fas fa-solid fa-pause" title="Pause"></i></a>
+                <a id="playingSong" class="playingSongBtn"><i class="fas fa-solid fa-play" title="Play"></i></a>
+                <a class="frontSongBtn"><i class="fas fa-solid fa-forward" title="Next Song"></i></a>
+                <a class="muteBtn"><i class="fas fa-volume-mute" title="Mute"></i></a>
+                <a style="display: none;" class="volumeUp"><i class="fas fa-volume-up" title="Volume On"></i></a>
             </div>
         </main>
 

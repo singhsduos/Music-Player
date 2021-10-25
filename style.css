@@ -277,3 +277,8 @@ i {
 .pauseSongBtn i{
   color: white;
 }
+
+
+.material-icons-round{
+  font-size: 16px !important;
+}
