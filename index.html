@@ -20,16 +20,18 @@
             <div class="btnsAndHeadingDiv">
                 <h5>Playing Song Name</h5>
             </div>
-
+             
+          
+            
             <div class="imgAndBtnDiv">
                 <a class="heartBtn"><i class="fas fa-solid fa-heart"></i></a>
                 <div class="imgDiv2">
-                    <img src="./songs.jpg" alt="" class="playingSongImg2">
+                    <img src="./img/song1.jpg" alt="" class="playingSongImg2">
                 </div>
                 <a class="closeBtn"><i class="fas fa-times"></i></a>
             </div>
 
-            <div class="songListDiv">
+            <ul class="songListDiv">
 
                 <div class="songsNameAndBtnDiv">
                     <div class="songsNameDiv">
@@ -66,7 +68,7 @@
                     <a class="pauseSongBtn"><i class="fas fa-solid fa-pause"></i></a>
                     <!-- <a class="playingSongBtn"><i class="fas fa-solid fa-play"></i></a> -->
                 </div>
-            </div>
+            </ul>
 
         </main>
 
@@ -79,7 +81,7 @@
             </div>
 
             <div class="imgDiv">
-                <img src="./songs.jpg" alt="" class="playingSongImg">
+                <img src="./img/song1.jpg" alt="" class="playingSongImg">
             </div>
 
             <div class="titleDiv">
@@ -88,8 +90,14 @@
             </div>
 
             <div class="sliderDiv">
+                <div class="timeDuration">
+                <p id="current">00:00</p>
+                <p id="duration">05:00</p>
+                </div>
                 <input type="range" min="1" max="100" value="1" class="songRange">
             </div>
+
+            <audio src="./music/song1.mp3" id="audio"></audio>
 
             <div class="audioControls">
                 <a id="repeatBtn"><i class="material-icons-round" title="Playlist Looped">repeat</i></a>
@@ -108,7 +116,8 @@
         </main>
 
     </div>
-
+     
+    <script src="songsList.js"></script>
     <script src="app.js"></script>
 </body>
 

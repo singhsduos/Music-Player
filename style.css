@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&display=swap");
 /*
  ______________________________________________
 |                                              |
@@ -36,7 +36,7 @@ body {
   align-items: center;
   flex-direction: column;
   color: var(--light-fontColor);
-  font-family: 'Zen Old Mincho', serif;
+  font-family: "Zen Old Mincho", serif;
 }
 
 .container {
@@ -52,7 +52,7 @@ body {
 }
 
 /************ DIV-1 *******************/
-.searchPage{
+.searchPage {
   overflow: hidden;
 }
 
@@ -112,11 +112,10 @@ body {
 
 /************ DIV-2 *******************/
 
-.mainPage{
+.mainPage {
   display: none;
   overflow: hidden;
 }
-
 
 .btnsAndHeadingDiv {
   display: flex;
@@ -155,15 +154,24 @@ body {
 .audioControls {
   flex-direction: row;
   justify-content: space-evenly;
-  margin: 3rem 0rem;
+  margin: 2rem 0rem;
 }
 
 .sliderDiv {
   width: 100%;
+  flex-direction: column;
+}
+
+.timeDuration {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 85%;
+  margin-bottom: 0.5rem;
 }
 
 .titleDiv {
-  margin: 2.438rem 0px;
+  margin: 1.438rem 0px;
   flex-direction: column;
 }
 
@@ -270,20 +278,19 @@ i {
   color: var(--light-fontColor);
 }
 
-.pauseSongBtn{
+.pauseSongBtn {
   background: var(--darkBlue-shade);
 }
 
-#pauseSong{
+#pauseSong {
   display: none;
 }
 
-.pauseSongBtn i{
+.pauseSongBtn i {
   color: white;
 }
 
-
-.material-icons-round{
+.material-icons-round {
   font-size: 16px !important;
 }
 
@@ -312,5 +319,15 @@ i {
 
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }
