@@ -16,10 +16,31 @@ const playingSongBtn = document.getElementById('playingSong');
 const nextSongBtn = document.getElementById('frontSongBtn');
 const muteBtn = document.getElementById('muteBtn');
 const volumeUp = document.getElementById('volumeUp');
+
+
+
+const songName = document.getElementById('songName');
+const artistName = document.getElementById('artistName');
+const songImage = document.getElementById('songImage');
 const audio = document.getElementById('audio');
 
 
+
+
 let songIndex = 0;
+let playingSong = true;
+
+
+pauseSongBtn.addEventListener('click', pauseSong);
+playingSongBtn.addEventListener('click', playSong);
+
+let imageFill = (songnum) => {
+    if (songnum > 3) {
+        songImage.style.objectFit = "none"
+    } else {
+        songImage.style.objectFit = "fill"
+    }
+}
 
 prevSongBtn.addEventListener('click', function () {
 
@@ -28,15 +49,17 @@ prevSongBtn.addEventListener('click', function () {
     if (songIndex < 0) {
         songIndex = songs.length - 1;
     }
-    console.log(songIndex);
+    imageFill(songIndex);
+    loadSong(songIndex);
 });
 
 
 nextSongBtn.addEventListener('click', function () {
     songIndex = (songIndex + 1) % songs.length;
-    console.log(songIndex);
 
-   
+    imageFill(songIndex);
+    loadSong(songIndex);
+
 });
 
 
@@ -74,19 +97,7 @@ repeatOneBtn.addEventListener('click', function () {
     repeatOneBtn.style.display = "none";
 });
 
-pauseSongBtn.addEventListener('click', function () {
-    pauseSongBtn.style.display = "none";
-    playingSongBtn.style.display = "block";
-    playingSongImg.style.animation = "none";
-    audio.pause();
-});
 
-playingSongBtn.addEventListener('click', function () {
-    pauseSongBtn.style.display = "block";
-    playingSongBtn.style.display = "none";
-    playingSongImg.style.animation = "rotate 3s linear infinite";
-    audio.play();
-});
 
 volumeUp.addEventListener('click', function () {
     volumeUp.style.display = "none";
@@ -100,3 +111,33 @@ muteBtn.addEventListener('click', function () {
     audio.muted = false;
 });
 
+
+let loadSong = (songNo) => {
+    songName.textContent = songs[songNo].name;
+    artistName.textContent = songs[songNo].artist;
+    audio.src = "./music/" + `song${songNo}` + ".mp3";
+    songImage.src = "./img/" + `song${songNo}` + ".jpg";
+
+    if (playingSong === false) {
+        pauseSong();
+    } else {
+        playSong();
+    }
+}
+
+
+function pauseSong() {
+    pauseSongBtn.style.display = "none";
+    playingSongBtn.style.display = "block";
+    playingSongImg.style.animation = "none";
+    playingSong = false;
+    audio.pause();
+}
+
+function playSong() {
+    pauseSongBtn.style.display = "block";
+    playingSongBtn.style.display = "none";
+    playingSongImg.style.animation = "rotate 3s linear infinite";
+    playingSong = true;
+    audio.play();
+}

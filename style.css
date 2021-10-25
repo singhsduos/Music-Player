@@ -124,6 +124,7 @@ body {
   align-items: center;
 }
 
+
 .imgDiv {
   height: 14.188rem;
   width: 14.188rem;
@@ -180,6 +181,7 @@ body {
   color: var(--songFont-color);
   font-weight: 700;
   text-transform: uppercase;
+  word-break: break-all;
 }
 
 input[type="range"] {
