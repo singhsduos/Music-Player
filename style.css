@@ -52,6 +52,9 @@ body {
 }
 
 /************ DIV-1 *******************/
+.searchPage{
+  overflow: hidden;
+}
 
 .imgAndBtnDiv {
   display: flex;
@@ -111,6 +114,7 @@ body {
 
 .mainPage{
   display: none;
+  overflow: hidden;
 }
 
 
@@ -281,4 +285,32 @@ i {
 
 .material-icons-round{
   font-size: 16px !important;
+}
+
+/*
+ ______________________________________________
+|                                              |
+|               ANIMATION                      |
+|______________________________________________|
+
+*/
+
+@keyframes slideFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }

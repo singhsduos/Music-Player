@@ -1,14 +1,15 @@
-const closeBtn = document.querySelector('.closeBtn');
-const listBtn = document.querySelector('.listBtn');
 const searchPage = document.querySelector('.searchPage');
 const mainPage = document.querySelector('.mainPage');
+
+const closeBtn = document.querySelector('.closeBtn');
+const listBtn = document.querySelector('.listBtn');
 // All Buttons for audio controls
 const repeatBtn = document.getElementById('repeatBtn');
 const randomBtn = document.getElementById('randomBtn');
 const repeatOneBtn = document.getElementById('repeatOneBtn');
 const backSongBtn = document.getElementById('backSongBtn');
-const pauseSongBtn = document.querySelector('#pauseSong');
-const playingSongBtn = document.querySelector('#playingSong');
+const pauseSongBtn = document.getElementById('pauseSong');
+const playingSongBtn = document.getElementById('playingSong');
 const frontSongBtn = document.getElementById('frontSongBtn');
 const muteBtn = document.getElementById('muteBtn');
 const volumeUp = document.getElementById('volumeUp');
@@ -19,12 +20,18 @@ const volumeUp = document.getElementById('volumeUp');
 closeBtn.addEventListener('click', function () {
     searchPage.style.display = "none";
     mainPage.style.display = "block";
+    mainPage.style.animation = "slideFromBottom 700ms ease-in";
+
 });
 
 listBtn.addEventListener('click', function () {
     mainPage.style.display = "none";
     searchPage.style.display = "block";
+    searchPage.style.animation = "slideFromTop 700ms ease-in";
 });
+
+
+// AUDIO CONTROLS
 
 repeatBtn.addEventListener('click', function () {
     repeatBtn.style.display = "none";
