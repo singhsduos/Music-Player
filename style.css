@@ -103,7 +103,7 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
+  box-shadow: inset 0 0 5px rgb(197, 197, 197);
   border-radius: 10px;
 }
 
@@ -113,21 +113,36 @@ body {
   border-radius: 10px;
 }
 
-.songsNameAndBtnDiv:nth-child(4) {
-  background: var(--currentSong-color);
+.current{
+  background:#d4e0f6 !important;
   box-shadow: inset rgba(9, 30, 66, 0.25) 0px 1px 1px,
     inset rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    border-radius: 10px;
 }
+
+.current a{
+  background-color:  var(--darkBlue-shade);
+}
+
+.current i{
+  color: white;
+}
+
+
 
 .songsNameAndBtnDiv {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  background: var(--lightBlue-shade);
   padding: 0.7rem;
   border-radius: 10px;
   height: 4rem;
+  cursor: pointer;
+}
+
+.songsNameAndBtnDiv>*.pauseSongBtn1{
+  display: none;
 }
 
 /************ DIV-2 *******************/

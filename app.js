@@ -50,7 +50,7 @@ for (; i < allpauseSongBtn.length; i++) {
 }
 
 for (; j < allplayingSongBtn.length; j++) {
-    
+
     allplayingSongBtn[j].addEventListener('click', playSong);
 }
 
@@ -257,23 +257,146 @@ function shuffle() {
 
 
 songs.forEach((elm, index) => {
-    let liTag = `<li liIndex="${index}">
-        <div class="songsNameAndBtnDiv">
-            <div class="songsNameDiv">
-                <h4 class="songName">${elm.name}</h4>
-                <h6 class="artistName">${elm.artist}</h6>
-            </div>
+    const liTag = document.createElement("li");
+    liTag.setAttribute("liIndex", index);
 
-            <a id="pauseSong${index}" class="pauseSongBtn"><i class="fas fa-solid fa-pause" title="Pause"></i></a>
-            <a id="playingSong${index}" class="playingSongBtn"><i class="fas fa-solid fa-play" title="Play"></i></a>
+    const songsNameAndBtnDiv = document.createElement("div");
+    songsNameAndBtnDiv.classList.add("songsNameAndBtnDiv");
 
-        </div>
-        <audio class="${elm.src}" src="./music/song${index}.mp3"></audio>
+    const songsNameDiv = document.createElement("div");
+    songsNameDiv.classList.add("songsNameDiv");
 
-    </li>`;
-    songListDiv.insertAdjacentHTML('beforeend', liTag);
+    const songNameHeading = document.createElement("h4");
+    songNameHeading.classList.add("songName");
+    songNameHeading.innerText = elm.name;
+    songsNameDiv.appendChild(songNameHeading);
+
+
+    const artistNameHeading = document.createElement("h6");
+    artistNameHeading.classList.add("artistName");
+    artistNameHeading.innerText = elm.artist;
+    songsNameDiv.appendChild(artistNameHeading);
+
+
+    songsNameAndBtnDiv.appendChild(songsNameDiv);
+
+    const pauseSongBtn1 = document.createElement("a");
+    pauseSongBtn1.classList.add("pauseSongBtn1");
+    pauseSongBtn1.setAttribute("id", `pauseSong${index}`);
+    const iPause = document.createElement("i");
+    iPause.classList.add("fas", "fa-solid", "fa-pause");
+    iPause.setAttribute("title", "Pause");
+    pauseSongBtn1.appendChild(iPause);
+    songsNameAndBtnDiv.appendChild(pauseSongBtn1);
+
+
+    const playingSongBtn1 = document.createElement("a");
+    playingSongBtn1.classList.add("playingSongBtn1");
+    playingSongBtn1.setAttribute("id", `playingSong${index}`);
+    const iPlay = document.createElement("i");
+    iPlay.classList.add("fas", "fa-solid", "fa-play");
+    iPlay.setAttribute("title", "Play");
+    playingSongBtn1.appendChild(iPlay);
+    songsNameAndBtnDiv.appendChild(playingSongBtn1);
+
+
+    const audio1 = document.createElement("audio");
+    audio1.src = `./music/song${index}.mp3`
+    liTag.appendChild(audio1);
+
+    liTag.appendChild(songsNameAndBtnDiv);
+
+
+    songListDiv.appendChild(liTag);
+
 
 });
+
+
+// play particular song on click list item
+const allLiTags = songListDiv.querySelectorAll('li');
+
+
+console.log(allLiTags)
+
+// add class and set duration of playing song
+const playingNow = () => {
+
+    allLiTags.forEach((liTag) => {
+        const pauseSongBtn1 = liTag.children[1].children[1];
+        const playSongBtn1 = liTag.children[1].children[2];
+
+
+        playSongBtn1.addEventListener('click', function() {
+
+            pauseSongBtn1.style.display = "block";
+            playSongBtn1.style.display = "none";
+            playingSong = true;
+            audio.play();
+
+        });
+
+        pauseSongBtn1.addEventListener('click', function() {
+            pauseSongBtn1.style.display = "none";
+            playSongBtn1.style.display = "block";
+            playingSong = false;
+            audio.pause();
+        });
+
+       
+
+        
+
+        if (liTag.classList.contains('current')) {
+            liTag.classList.remove('current');
+            
+           
+
+
+        }
+
+        if (liTag.getAttribute('liIndex') == songIndex) {
+            liTag.classList.add('current');
+           
+        }
+        
+        if (liTag.getAttribute('liIndex') !== songIndex) {
+            pauseSongBtn1.style.display = "none";
+            playSongBtn1.style.display = "block";
+
+        }
+
+        liTag.setAttribute('onclick', "clicked(this)");
+    });
+
+
+}
+
+
+
+setInterval(playingNow, 100);
+
+// play song on click of list item 
+const clicked = (el) => {
+    const pauseSongBtn1 = el.children[1].children[1];
+    const playSongBtn1 = el.children[1].children[2];
+    let liIndex = el.getAttribute('liIndex');
+    songIndex = liIndex;
+    if (pauseSongBtn1.style.display === "none") {
+        playSongBtn1.style.display = "block";
+        pauseSongBtn1.style.display = "none";
+
+        console.log("pause");
+    } else {
+        pauseSongBtn1.style.display = "block";
+        playSongBtn1.style.display = "none";
+        console.log("play");
+    }
+    imageFill(songIndex);
+    loadSong(songIndex);
+
+}
+
 
 // function seek(event) {
 //     if (audio.duration == 0) {
