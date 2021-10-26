@@ -316,9 +316,6 @@ songs.forEach((elm, index) => {
 // play particular song on click list item
 const allLiTags = songListDiv.querySelectorAll('li');
 
-
-console.log(allLiTags)
-
 // add class and set duration of playing song
 const playingNow = () => {
 
@@ -327,7 +324,7 @@ const playingNow = () => {
         const playSongBtn1 = liTag.children[1].children[2];
 
 
-        playSongBtn1.addEventListener('click', function() {
+        playSongBtn1.addEventListener('click', function () {
 
             pauseSongBtn1.style.display = "block";
             playSongBtn1.style.display = "none";
@@ -336,34 +333,24 @@ const playingNow = () => {
 
         });
 
-        pauseSongBtn1.addEventListener('click', function() {
+        pauseSongBtn1.addEventListener('click', function () {
             pauseSongBtn1.style.display = "none";
             playSongBtn1.style.display = "block";
             playingSong = false;
             audio.pause();
         });
 
-       
-
-        
-
         if (liTag.classList.contains('current')) {
             liTag.classList.remove('current');
-            
-           
-
-
         }
 
         if (liTag.getAttribute('liIndex') == songIndex) {
             liTag.classList.add('current');
-           
         }
-        
+
         if (liTag.getAttribute('liIndex') !== songIndex) {
             pauseSongBtn1.style.display = "none";
             playSongBtn1.style.display = "block";
-
         }
 
         liTag.setAttribute('onclick', "clicked(this)");
@@ -382,15 +369,13 @@ const clicked = (el) => {
     const playSongBtn1 = el.children[1].children[2];
     let liIndex = el.getAttribute('liIndex');
     songIndex = liIndex;
-    if (pauseSongBtn1.style.display === "none") {
-        playSongBtn1.style.display = "block";
-        pauseSongBtn1.style.display = "none";
-
-        console.log("pause");
-    } else {
+    if (playingSong === true) {
         pauseSongBtn1.style.display = "block";
         playSongBtn1.style.display = "none";
-        console.log("play");
+
+    } else {
+        playSongBtn1.style.display = "block";
+        pauseSongBtn1.style.display = "none";
     }
     imageFill(songIndex);
     loadSong(songIndex);
