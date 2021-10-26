@@ -18,7 +18,7 @@
     <div class="container">
         <main class="searchPage">
             <div class="btnsAndHeadingDiv">
-                <h5>Playing Song Name</h5>
+                <h5 id="songHeading">Playing Song Name</h5>
             </div>
 
 
@@ -26,48 +26,16 @@
             <div class="imgAndBtnDiv">
                 <a class="heartBtn"><i class="fas fa-solid fa-heart"></i></a>
                 <div class="imgDiv2">
-                    <img src="./img/song1.jpg" alt="" class="playingSongImg2">
+                    <img src="./img/song0.jpg" alt="cover image" id="songImage2" class="playingSongImg2">
                 </div>
                 <a class="closeBtn"><i class="fas fa-times"></i></a>
             </div>
 
             <ul class="songListDiv">
 
-                <div class="songsNameAndBtnDiv">
-                    <div class="songsNameDiv">
-                        <h4 class="songName">Helix</h4>
-                        <h6 class="artistName">Flume</h6>
-                    </div>
+                
                     <!-- <a class="pauseSongBtn"><i class="fas fa-solid fa-pause"></i></a> -->
-                    <a class="playingSongBtn"><i class="fas fa-solid fa-play"></i></a>
-
-                </div>
-                <div class="songsNameAndBtnDiv">
-                    <div class="songsNameDiv">
-                        <h4 class="songName">Helix</h4>
-                        <h6 class="artistName">Flume</h6>
-                    </div>
-                    <!-- <a class="pauseSongBtn"><i class="fas fa-solid fa-pause"></i></a> -->
-                    <a class="playingSongBtn"><i class="fas fa-solid fa-play"></i></a>
-
-                </div>
-                <div class="songsNameAndBtnDiv">
-                    <div class="songsNameDiv">
-                        <h4 class="songName">Helix</h4>
-                        <h6 class="artistName">Flume</h6>
-                    </div>
-                    <!-- <a class="pauseSongBtn"><i class="fas fa-solid fa-pause"></i></a> -->
-                    <a class="playingSongBtn"><i class="fas fa-solid fa-play"></i></a>
-
-                </div>
-                <div class="songsNameAndBtnDiv">
-                    <div class="songsNameDiv">
-                        <h4 class="songName">Helix</h4>
-                        <h6 class="artistName">Flume</h6>
-                    </div>
-                    <a class="pauseSongBtn"><i class="fas fa-solid fa-pause"></i></a>
-                    <!-- <a class="playingSongBtn"><i class="fas fa-solid fa-play"></i></a> -->
-                </div>
+                 
             </ul>
 
         </main>
@@ -94,7 +62,8 @@
                     <p id="current">00:00</p>
                     <p id="duration">05:00</p>
                 </div>
-                <input type="range" min="1" max="100" value="1" class="songRange">
+                <input id="songRange" type="range" min="1" max="100" value="0" step="1" class="songRange">
+                <div id="progressbar"></div>
             </div>
 
             <audio src="./music/song0.mp3" id="audio"></audio>
