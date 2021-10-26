@@ -33,34 +33,8 @@ let playingSong = true;
 
 pauseSongBtn.addEventListener('click', pauseSong);
 playingSongBtn.addEventListener('click', playSong);
-
-let imageFill = (songnum) => {
-    if (songnum > 3) {
-        songImage.style.objectFit = "none"
-    } else {
-        songImage.style.objectFit = "fill"
-    }
-}
-
-prevSongBtn.addEventListener('click', function () {
-
-    songIndex--;
-
-    if (songIndex < 0) {
-        songIndex = songs.length - 1;
-    }
-    imageFill(songIndex);
-    loadSong(songIndex);
-});
-
-
-nextSongBtn.addEventListener('click', function () {
-    songIndex = (songIndex + 1) % songs.length;
-
-    imageFill(songIndex);
-    loadSong(songIndex);
-
-});
+nextSongBtn.addEventListener('click', nextSong);
+prevSongBtn.addEventListener('click', prevSong);
 
 
 closeBtn.addEventListener('click', function () {
@@ -89,6 +63,7 @@ randomBtn.addEventListener('click', function () {
     repeatBtn.style.display = "none";
     randomBtn.style.display = "none";
     repeatOneBtn.style.display = "block";
+    songIndex = Math.floor(Math.random() * songs.length);
 });
 
 repeatOneBtn.addEventListener('click', function () {
@@ -140,4 +115,62 @@ function playSong() {
     playingSongImg.style.animation = "rotate 3s linear infinite";
     playingSong = true;
     audio.play();
+}
+
+function nextSong() {
+    songIndex = (songIndex + 1) % songs.length;
+
+    imageFill(songIndex);
+    loadSong(songIndex);
+
+}
+
+function prevSong() {
+    songIndex--;
+
+    if (songIndex < 0) {
+        songIndex = songs.length - 1;
+    }
+    imageFill(songIndex);
+    loadSong(songIndex);
+}
+
+
+function imageFill(songnum) {
+    if (songnum > 3) {
+        songImage.style.objectFit = "none"
+    } else {
+        songImage.style.objectFit = "fill"
+    }
+}
+
+audio.addEventListener('timeupdate', function () {
+
+    const dur = Math.floor(audio.duration);
+    const cur = Math.floor(audio.currentTime);
+
+
+    if (duration.innerText === "0NaN:0NaN") {
+
+        duration.textContent = "00:00";
+        currentTym.textContent = "00:00"
+    } else {
+        duration.textContent = updateTime(dur);
+        currentTym.textContent = updateTime(cur);
+    }
+
+    console.log(duration.innerText);
+    console.log(currentTym.innerText)
+
+});
+
+
+function updateTime(curAndDur) {
+    var sec = Math.floor(curAndDur);
+    var min = Math.floor(sec / 60);
+    min = min >= 10 ? min : '0' + min;
+    sec = Math.floor(sec % 60);
+    sec = sec >= 10 ? sec : '0' + sec;
+
+    return (min + ":" + sec);
 }
