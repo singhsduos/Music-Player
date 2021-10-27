@@ -34,7 +34,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
   color: var(--light-fontColor);
   font-family: "Zen Old Mincho", serif;
 }
@@ -297,6 +297,52 @@ i {
 
 .songsNameAndBtnDiv > *.pauseSongBtn1 {
   display: none;
+}
+
+/* FOOTER */
+footer a {
+  text-decoration: none;
+  margin: 0.5rem;
+}
+
+footer i {
+  color: rgb(81, 81, 252);
+  padding: 0.7rem;
+}
+
+footer i:hover {
+  color: black;
+}
+
+footer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*
+ ______________________________________________
+|                                              |
+|            MEDIA QUERIES CSS                 |
+|______________________________________________|
+
+*/
+@media screen and (max-width: 450px) {
+  body {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .container {
+    margin: 1rem;
+  }
+
+  footer {
+    margin-top: 0.5rem;
+    flex-direction: row;
+  }
 }
 
 /*
