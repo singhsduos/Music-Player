@@ -23,14 +23,9 @@ This is a music streamer player where you play different type of pre-loaded song
 
 
 
-
 ## Demo Video
 
-
-
-
-
-
+https://user-images.githubusercontent.com/32032008/139032551-0a55bc65-35f9-4756-98b1-416e6cae402c.mp4
 
 
 
