@@ -81,22 +81,26 @@ listBtn.addEventListener('click', function () {
 
 
 // SHUFFLE CONTROLS
+let shufflessText = "repeatBtn";
 repeatBtn.addEventListener('click', function () {
     repeatBtn.style.display = "none";
     randomBtn.style.display = "block";
     repeatOneBtn.style.display = "none";
+    shufflessText = "randomBtn";
 });
 
 randomBtn.addEventListener('click', function () {
     repeatBtn.style.display = "none";
     randomBtn.style.display = "none";
     repeatOneBtn.style.display = "block";
+    shufflessText = "repeatOneBtn";
 });
 
 repeatOneBtn.addEventListener('click', function () {
     repeatBtn.style.display = "block";
     randomBtn.style.display = "none";
     repeatOneBtn.style.display = "none";
+    shufflessText = "repeatBtn";
 
 });
 
@@ -190,21 +194,18 @@ function shuffle() {
     switch (getTxt) {
         case "repeatBtn":
             nextSong();
-            console.log(songIndex);
             break;
 
         case "repeatOneBtn":
             audio.currentTime = 0;
             imageFill(songIndex);
             loadSong(songIndex);
-            console.log(songIndex);
             break;
 
         case "randomBtn":
             songIndex = Math.floor(Math.random() * songs.length);
             imageFill(songIndex);
             loadSong(songIndex);
-            console.log(songIndex);
             break;
     }
 }
