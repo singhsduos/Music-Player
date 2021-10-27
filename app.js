@@ -1,7 +1,7 @@
 const searchPage = document.querySelector('.searchPage');
 const mainPage = document.querySelector('.mainPage');
 
-const closeBtn = document.querySelector('.closeBtn');
+// MAIN PAGE
 const listBtn = document.querySelector('.listBtn');
 const playingSongImg = document.querySelector('.playingSongImg');
 const currentTym = document.getElementById('current');
@@ -18,8 +18,10 @@ const playingSongBtn = document.getElementById('playingSong');
 const nextSongBtn = document.getElementById('frontSongBtn');
 const muteBtn = document.getElementById('muteBtn');
 const volumeUp = document.getElementById('volumeUp');
-const progressbar = document.getElementById('progressbar');
+let progressArea = document.querySelector(".progress-area");
+let progressBar = document.querySelector(".progress-bar");
 
+// ELEMENTS FOR UPDATING EVERY NEW SONGS
 const songName = document.getElementById('songName');
 const artistName = document.getElementById('artistName');
 const songImage = document.getElementById('songImage');
@@ -27,6 +29,9 @@ const audio = document.getElementById('audio');
 
 
 // SEARCH PAGE
+const closeBtn = document.querySelector('.closeBtn');
+const heart = document.querySelector('.fa-heart');
+const heartBtn = document.getElementById('heartBtn');
 const songImage2 = document.getElementById('songImage2');
 const songHeading = document.getElementById('songHeading');
 const songListDiv = document.querySelector('.songListDiv');
@@ -36,15 +41,22 @@ const allplayingSongBtn = document.querySelectorAll('.playingSongBtn');
 
 
 
+
 let songIndex = 0;
 let playingSong = false;
 let seeking;
 let songRangeValue;
-
-
-pauseSongBtn.addEventListener('click', pauseSong);
 let i = 0;
 let j = 0;
+
+// SONG CONTROLS
+pauseSongBtn.addEventListener('click', pauseSong);
+playingSongBtn.addEventListener('click', playSong);
+nextSongBtn.addEventListener('click', nextSong);
+prevSongBtn.addEventListener('click', prevSong);
+heartBtn.addEventListener('click', colorHeart);
+
+
 for (; i < allpauseSongBtn.length; i++) {
     allpauseSongBtn[i].addEventListener("click", pauseSong);
 }
@@ -53,23 +65,6 @@ for (; j < allplayingSongBtn.length; j++) {
 
     allplayingSongBtn[j].addEventListener('click', playSong);
 }
-
-playingSongBtn.addEventListener('click', playSong);
-
-nextSongBtn.addEventListener('click', nextSong);
-prevSongBtn.addEventListener('click', prevSong);
-// songRange.addEventListener('mousedown', function (event) {
-//     seeking = true;
-//     seek(event);
-// });
-// songRange.addEventListener('mousemove', function (event) {
-//     seek(event);
-// });
-// songRange.addEventListener('mouseup', function () {
-//     seeking = false;
-
-// });
-
 
 closeBtn.addEventListener('click', function () {
     searchPage.style.display = "none";
@@ -85,36 +80,28 @@ listBtn.addEventListener('click', function () {
 });
 
 
-// AUDIO CONTROLS
-
-let shufflessText = "repeatBtn";
-
+// SHUFFLE CONTROLS
 repeatBtn.addEventListener('click', function () {
     repeatBtn.style.display = "none";
     randomBtn.style.display = "block";
     repeatOneBtn.style.display = "none";
-    shufflessText = "randomBtn";
-    console.log(shufflessText);
 });
 
 randomBtn.addEventListener('click', function () {
     repeatBtn.style.display = "none";
     randomBtn.style.display = "none";
     repeatOneBtn.style.display = "block";
-    shufflessText = "repeatOneBtn";
-    console.log(shufflessText);
 });
 
 repeatOneBtn.addEventListener('click', function () {
     repeatBtn.style.display = "block";
     randomBtn.style.display = "none";
     repeatOneBtn.style.display = "none";
-    shufflessText = "repeatBtn";
-    console.log(shufflessText);
+
 });
 
 
-
+// CONTROL FOR MUTE AND UNMUTE
 volumeUp.addEventListener('click', function () {
     volumeUp.style.display = "none";
     muteBtn.style.display = "block";
@@ -127,7 +114,7 @@ muteBtn.addEventListener('click', function () {
     audio.muted = false;
 });
 
-
+// LOAD EVERYTHING OF SONG WHEN SONG INDEX CHANGED
 let loadSong = (songNo) => {
     songName.textContent = songs[songNo].name;
     songHeading.innerText = songs[songNo].name;
@@ -145,7 +132,7 @@ let loadSong = (songNo) => {
 
 loadSong(songIndex);
 
-
+// FUNCTIONS
 function pauseSong() {
     pauseSongBtn.style.display = "none";
     playingSongBtn.style.display = "block";
@@ -179,6 +166,13 @@ function prevSong() {
     loadSong(songIndex);
 }
 
+function colorHeart() {
+    if (heart.style.color !== "red") {
+        heart.style.color = "red"
+    } else {
+        heart.style.color = "#a1b1ca";
+    }
+}
 
 function imageFill(songnum) {
     if (songnum > 3) {
@@ -189,45 +183,6 @@ function imageFill(songnum) {
         songImage2.style.objectFit = "fill";
     }
 }
-
-
-
-audio.addEventListener('timeupdate', function () {
-
-    const dur = Math.floor(audio.duration);
-    const cur = Math.floor(audio.currentTime);
-
-
-    if (duration.innerText === "0NaN:0NaN") {
-
-        duration.textContent = "00:00";
-        currentTym.textContent = "00:00"
-    } else {
-        duration.textContent = updateTime(dur);
-        currentTym.textContent = updateTime(cur);
-        songRange.value = (cur / dur) * 100;
-        if (cur === dur) {
-            shuffle();
-        }
-        if (songRange.value < 87) {
-            progressbar.style.width = songRange.value + "%";
-        } else {
-            return;
-        }
-    }
-
-});
-
-
-function updateTime(curAndDur) {
-    var sec = Math.floor(curAndDur);
-    var min = Math.floor(sec / 60);
-    min = min >= 10 ? min : '0' + min;
-    sec = Math.floor(sec % 60);
-    sec = sec >= 10 ? sec : '0' + sec;
-    return (min + ":" + sec);
-}
-
 
 function shuffle() {
     let getTxt = shufflessText;
@@ -254,32 +209,77 @@ function shuffle() {
     }
 }
 
+// EVENT LISTENER FOR UPDATING AUDIO TIME 
+audio.addEventListener('timeupdate', function () {
+
+    const dur = Math.floor(audio.duration);
+    const cur = Math.floor(audio.currentTime);
+    currentTym.textContent = updateTime(cur);
+    if (cur === dur) {
+        shuffle();
+    }
+
+    let progressWidth = (audio.currentTime / audio.duration) * 100;
+    progressBar.style.width = `${progressWidth}%`;
+
+    audio.addEventListener('loadeddata', () => {
+        // update song total duration
+        let audioDuration = audio.duration;
+        duration.textContent = updateTime(audioDuration);
+    });
+
+});
+
+// EVENT LISTENER FOR UPDATING CURRENT SONG TIME ONCLICK
+progressArea.addEventListener('click', function (e) {
+    let onClickProgressWidth = progressArea.clientWidth;
+    let clickedOffSet = e.offsetX;
+    let songDuration = audio.duration;
+    audio.currentTime = (clickedOffSet / onClickProgressWidth) * songDuration;
+
+});
 
 
+function updateTime(curAndDur) {
+    var sec = Math.floor(curAndDur);
+    var min = Math.floor(sec / 60);
+    min = min >= 10 ? min : '0' + min;
+    sec = Math.floor(sec % 60);
+    sec = sec >= 10 ? sec : '0' + sec;
+    return (min + ":" + sec);
+}
+
+// CREATE LIST OF ALL SONGS PRESENT IN MEMORY
 songs.forEach((elm, index) => {
+    // CREATE LI ITEM FOR EACH
     const liTag = document.createElement("li");
     liTag.setAttribute("liIndex", index);
 
+    // CREATE DIV FOR ONE AUDIO
     const songsNameAndBtnDiv = document.createElement("div");
     songsNameAndBtnDiv.classList.add("songsNameAndBtnDiv");
 
+    // CREATE DIV FOR SONG NAME AND SONG ARTISIT
     const songsNameDiv = document.createElement("div");
     songsNameDiv.classList.add("songsNameDiv");
 
+    // CREATE SONG NAME HEADING
     const songNameHeading = document.createElement("h4");
     songNameHeading.classList.add("songName");
     songNameHeading.innerText = elm.name;
     songsNameDiv.appendChild(songNameHeading);
 
-
+    // CREATE SONG ARTIST NAME 
     const artistNameHeading = document.createElement("h6");
     artistNameHeading.classList.add("artistName");
     artistNameHeading.innerText = elm.artist;
     songsNameDiv.appendChild(artistNameHeading);
 
-
+    // ADD SONG NAME AND ARTIST DIV INSIDE DIV OF SINGLE AUDIO
     songsNameAndBtnDiv.appendChild(songsNameDiv);
 
+    // CREATE PLAY AND PAUSE BUTTONS 
+    // BUTTON FOR PAUSING THE SONG
     const pauseSongBtn1 = document.createElement("a");
     pauseSongBtn1.classList.add("pauseSongBtn1");
     pauseSongBtn1.setAttribute("id", `pauseSong${index}`);
@@ -290,6 +290,7 @@ songs.forEach((elm, index) => {
     songsNameAndBtnDiv.appendChild(pauseSongBtn1);
 
 
+    // BUTTON FOR PLAYING THE SONG
     const playingSongBtn1 = document.createElement("a");
     playingSongBtn1.classList.add("playingSongBtn1");
     playingSongBtn1.setAttribute("id", `playingSong${index}`);
@@ -300,13 +301,14 @@ songs.forEach((elm, index) => {
     songsNameAndBtnDiv.appendChild(playingSongBtn1);
 
 
+    // CREATE AUDIO SOURCE FOR EACH SONG
     const audio1 = document.createElement("audio");
     audio1.src = `./music/song${index}.mp3`
     liTag.appendChild(audio1);
 
+    // ADD DIV AUDIO INSIDE LI
     liTag.appendChild(songsNameAndBtnDiv);
-
-
+    // ADD LI INSIDE THE UL ELEMENT OF SONGLIST DIV
     songListDiv.appendChild(liTag);
 
 
@@ -359,8 +361,6 @@ const playingNow = () => {
 
 }
 
-
-
 setInterval(playingNow, 100);
 
 // play song on click of list item 
@@ -381,22 +381,3 @@ const clicked = (el) => {
     loadSong(songIndex);
 
 }
-
-
-// function seek(event) {
-//     if (audio.duration == 0) {
-//         null;
-//     } else {
-//         if (seeking) {
-
-//             const dur = Math.floor(audio.duration);
-//             const cur = Math.floor(audio.currentTime);
-
-//             songRange.value = (cur / dur) * 100;
-//             let seekTo = dur * (songRange.value  / 100);
-//             audio.currentTime = seekTo;
-//             // console.log(songRange.value);
-//             console.log(seekTo)
-//         }
-//     }
-// }
